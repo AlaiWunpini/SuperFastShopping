@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">Super Fast Shopping</string>
+
+    <!--Titles-->
+    <string name="login_title">Login</string>
+    <string name="signup_title">Sign up</string>
+
+    <!--Welcome messages-->
+    <string name="splash_welcome_txt">Easiest way to\nShop at the Mall\nScan,Add,Just MoMo It</string>
+    <string name="login_welcome_txt">Hello there !\nWelcome Back</string>
+    <string name="signup_welcome_txt">Hello there !\nWelcome to you</string>
+
+
+    <!--Button labels-->
+    <string name="login_btn_label">Login</string>
+    <string name="signup_btn_label">Signup</string>
+
+    <string name="login_label">" Login"</string>
+    <string name="signup_label">" Signup"</string>
+
+    <string name="login_fb_btn_label">"{faw-facebook-f}    Login with Facebook"</string>
+    <string name="signup_fb_btn_label">"{faw-facebook-f}    Signup with Facebook"</string>
+
+    <string name="get_started_btn_label">Get Started</string>
+
+    <!--Edit Text hints-->
+    <string name="email_address_hint">Email Address</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="password_hint">Password</string>
+
+
+    <!--Misc texts-->
+    <string name="forgot_password">Forgot password?</string>
+    <string name="no_account">Don\’t have an account?</string>
+    <string name="have_account">Have an account?</string>
+    <string name="divider_or">OR</string>
+    <string name="phonenumber">Phonenumber</string>
+
+    <string name="quantity">Quantity</string>
+    <string name="brew_tea">ADD TO CART</string>
+    <string name="initial_cost">$0.00</string>
+    <string name="initial_quantity_value">1</string>
+    <string name="total">Total</string>
+    <string name="price">PRICE: </string>
+    <string name="action_cart">Shopping Cart</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="fragrance_name">Fragrance Name</string>
+    <string name="check_out">CHECK OUT</string>
+    <string name="category">Category</string>
+    <string name="details">Details</string>
+    <string name="barcode">barcode</string>
+    <string name="choose_file">Choose File</string>
+    <string name="upload">Upload</string>
+    <string name="product_category">Product Category</string>
+    <string name="product_details">Product Details</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_description">Product Description</string>
+    <string name="product_price">Product Price</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="checkout">Checkout</string>
+    <string name="product_quantity">Product Quantity</string>
+    <string name="description_label">Description:</string>
+</resources>

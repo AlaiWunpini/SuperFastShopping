@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "333789256164",
+    "firebase_url": "https://super-fast-shopping.firebaseio.com",
+    "project_id": "super-fast-shopping",
+    "storage_bucket": "super-fast-shopping.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333789256164:android:a67d720ef3b5aace3f0ff1",
+        "android_client_info": {
+          "package_name": "com.altechinferno.superfastshopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333789256164-8n7umvv4pncfqsm655h3ghglchkrfm67.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.altechinferno.superfastshopping",
+            "certificate_hash": "ef651c72cd7965858e4061461ac0c9f975452173"
+          }
+        },
+        {
+          "client_id": "333789256164-u9v18kq6ls0v227619076evr6cp7alk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCCTryxu0psOj_Id0RTVEZ-_0-h4IkzRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333789256164-u9v18kq6ls0v227619076evr6cp7alk7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
