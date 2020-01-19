@@ -97,7 +97,7 @@ public class productDetail extends AppCompatActivity {
         saveCurrentTime = currentDate.format(CalForDate.getTime());
 
 
-        DocumentReference cartListRef = mFirestore.collection("CartList/UserView/Products").document(customerID);
+        DocumentReference cartListRef = mFirestore.collection("CartList").document(customerID);
 
 
         final HashMap<String, Object> cartMap = new HashMap<>();

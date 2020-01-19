@@ -86,7 +86,7 @@ public class cart extends AppCompatActivity {
 
         //CheckOrderState();
 
-        final CollectionReference cartListRef = mFireStore.collection("CartList/UserView/Products");
+        final CollectionReference cartListRef = mFireStore.collection("CartList");
 
         Query query = cartListRef.whereEqualTo(customerID,true);
 

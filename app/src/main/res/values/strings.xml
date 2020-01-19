@@ -61,7 +61,4 @@
     <string name="checkout">Checkout</string>
     <string name="product_quantity">Product Quantity</string>
     <string name="description_label">Description:</string>
-    <string name="mobile_money_number">Mobile Money Number</string>
-    <string name="amount">Amount</string>
-    <string name="make_payment">Make Payment!</string>
 </resources>
