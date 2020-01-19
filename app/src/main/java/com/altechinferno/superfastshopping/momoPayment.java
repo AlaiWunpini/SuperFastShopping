@@ -1,50 +1,97 @@
 package com.altechinferno.superfastshopping;
+//
 
-import java.net.URI;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
-public class momoPayment {
+import androidx.appcompat.app.AppCompatActivity;
 
-    public static void main(String[] args) {
-        HttpClient httpclient = HttpClients.createDefault();
+import com.altechinferno.superfastshopping.model.Cart;
 
-        try {
-            URIBuilder builder = new URIBuilder("https://sandbox.momodeveloper.mtn.com/collection/v1_0/requesttopay");
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
+public class momoPayment extends AppCompatActivity {
 
-            URI uri = builder.build();
-            HttpPost request = new HttpPost(uri);
-            request.setHeader("Authorization", "");
-            request.setHeader("X-Callback-Url", "");
-            request.setHeader("X-Reference-Id", "533ce45e-55d8-469f-b352-2dd4ecc331c0");
-            request.setHeader("X-Target-Environment", "sandbox");
-            request.setHeader("Content-Type", "application/json");
-            request.setHeader("Ocp-Apim-Subscription-Key", "f0018849877448cda6bba1f1983fb1e8");
+    private static momoPayment instance ;
 
+    public momoPayment(String body){
+        instance = this;
 
-            // Request body
-            StringEntity reqEntity = new StringEntity("{body}");
-            request.setEntity(reqEntity);
-
-            HttpResponse response = httpclient.execute(request);
-            HttpEntity entity = response.getEntity();
-
-            if (entity != null) {
-                System.out.println(EntityUtils.toString(entity));
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-
+        new HTTPTrack().execute(body);
     }
 
+    public momoPayment(){
+        instance = this;
+    }
+
+    public static Context getContext() {
+        instance = new momoPayment();
+        return instance;
+    }
+
+    private static class HTTPTrack extends AsyncTask<String, Void, Void> {
+
+
+        @Override
+        protected Void doInBackground(String... params) {
+            HttpURLConnection urlConnection = null;
+
+            try {
+
+//
+                URL url = new URL("https://sandbox.momodeveloper.mtn.com/collection/v1_0/requesttopay");
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestProperty("Content-Type", "application/json");
+//                urlConnection.setRequestProperty("Authorization", "");
+//                urlConnection.setRequestProperty("X-Callback-Url", "");
+                urlConnection.setRequestProperty("X-Reference-Id", "9ecd4c29-b999-42e4-9d73-b43c8f0372ff");
+                urlConnection.setRequestProperty("X-Target-Environment", "sandbox");
+                urlConnection.setRequestProperty("Ocp-Apim-Subscription-Key", "f0018849877448cda6bba1f1983fb1e8");
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setDoOutput(true);
+                urlConnection.setDoInput(true);
+                urlConnection.setChunkedStreamingMode(0);
+
+                OutputStream out = new BufferedOutputStream(urlConnection.getOutputStream());
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
+                        out, "UTF-8"));
+                writer.write(params[0]);
+                writer.flush();
+
+                int code = urlConnection.getResponseCode();
+                if (code == 401) {
+                    throw new IOException("UnAuthorized Request: " + code);
+                } else if (code != 201) {
+                    throw new IOException("Invalid response from server: " + code);
+                }
+
+                BufferedReader rd = new BufferedReader(new InputStreamReader(
+                        urlConnection.getInputStream()));
+                String line;
+                while ((line = rd.readLine()) != null) {
+                    Log.i("data", line);
+                }
+
+            } catch (Exception e) {
+                //e.printStackTrace();
+                Toast.makeText(momoPayment.getContext(),e.getMessage(),Toast.LENGTH_LONG);
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+            }
+            return null;
+        }
+
+    }
 }
