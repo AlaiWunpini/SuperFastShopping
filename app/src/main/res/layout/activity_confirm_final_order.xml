@@ -6,4 +6,111 @@
     android:layout_height="match_parent"
     tools:context=".ConfirmFinalOrder">
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/ToolbarStyle" >
+
+            <ImageButton
+                android:paddingStart="16dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/containerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:layout_margin="@dimen/container_layout_margin">
+
+            <TextView
+                android:id="@+id/payment_label"
+                style="@style/LabelStyle"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/sf_pro_display_medium"
+                android:text="Self-Checkout"
+                android:textColor="@color/orange" />
+
+            <TextView
+                android:id="@+id/login_welcome_msg"
+                style="@style/LabelStyle"
+                android:layout_below="@id/payment_label"
+                android:layout_marginTop="@dimen/layout_in_between_margins"
+                android:text="Enter MoMo Details to Confirm Payment" />
+
+            <EditText
+                android:id="@+id/momoNumber"
+                style="@style/EditTextStyle"
+                android:layout_below="@id/login_welcome_msg"
+                android:layout_marginTop="@dimen/layout_in_between_margins"
+                android:hint="054xxxxxxx"
+                android:inputType="phone" />
+
+            <TextView
+                android:id="@+id/totalPriceLabel"
+                style="@style/LabelStyle"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/momoNumber"
+                android:layout_marginTop="@dimen/layout_in_between_margins"
+                android:fontFamily="@font/sf_pro_display_medium"
+                android:text="Total Price"
+                android:textColor="@color/orange"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/totalAmountPay"
+                style="@style/EditTextStyle"
+                android:layout_below="@id/momoNumber"
+                android:layout_marginTop="@dimen/layout_in_between_margins"
+                android:hint="GHS 0.00"
+                android:inputType="phone" />
+
+
+
+            <Button
+                android:id="@+id/makePayment"
+                style="@style/SolidButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_below="@id/totalAmountPay"
+                android:layout_marginTop="@dimen/layout_in_between_margins"
+                android:text="Confirm Payment" />
+
+
+
+            <RelativeLayout
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/makePayment"
+                android:layout_marginBottom="@dimen/divider_top_and_bottom_margins"
+                android:layout_marginTop="@dimen/divider_top_and_bottom_margins">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="invisible"
+
+                    />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
