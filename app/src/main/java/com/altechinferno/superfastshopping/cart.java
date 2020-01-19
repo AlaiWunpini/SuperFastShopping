@@ -38,7 +38,7 @@ public class cart extends AppCompatActivity {
 
     FirebaseFirestore mFireStore;
 
-    String customerID = "";
+    String customer = "";
 
     private int overTotalPrice = 0;
 
@@ -49,7 +49,7 @@ public class cart extends AppCompatActivity {
 
 
         FirebaseUser customerCurrent = FirebaseAuth.getInstance().getCurrentUser();
-        customerID = customerCurrent.getUid();
+        customer = customerCurrent.getEmail();
 
 
         mFireStore = FirebaseFirestore.getInstance();
@@ -67,8 +67,7 @@ public class cart extends AppCompatActivity {
 
         NextProcessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 txtTotalAmount.setText("Total Price = $" + String.valueOf(overTotalPrice));
 
                 Intent intent = new Intent(cart.this, ConfirmFinalOrder.class);
@@ -80,15 +79,14 @@ public class cart extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         super.onStart();
 
         //CheckOrderState();
 
         final CollectionReference cartListRef = mFireStore.collection("CartList");
 
-        Query query = cartListRef.whereEqualTo(customerID,true);
+        Query query = cartListRef.whereEqualTo("customer", customer);
 
         FirestoreRecyclerOptions<Cart> options =
                 new FirestoreRecyclerOptions.Builder<Cart>()
@@ -99,8 +97,7 @@ public class cart extends AppCompatActivity {
                 = new FirestoreRecyclerAdapter<Cart, CartViewHolder>(options) {
 
             @Override
-            protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model)
-            {
+            protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
                 holder.productQuantity.setText("Quantity = " + model.getQuantity());
                 holder.productPrice.setText("Price " + model.getPrice() + "GHc");
                 holder.productName.setText(model.getPname());
@@ -112,8 +109,7 @@ public class cart extends AppCompatActivity {
 
             @NonNull
             @Override
-            public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-            {
+            public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_items, parent, false);
                 CartViewHolder holder = new CartViewHolder(view);
                 return holder;
