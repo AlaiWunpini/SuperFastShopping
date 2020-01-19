@@ -120,5 +120,4 @@ public class cart extends AppCompatActivity {
         adapter.startListening();
     }
 
-
 }

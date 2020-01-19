@@ -61,7 +61,7 @@ public class ConfirmFinalOrder extends AppCompatActivity {
         makePayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    paymentClick();
+                paymentClick();
                 Check();
             }
         });
@@ -118,7 +118,7 @@ public class ConfirmFinalOrder extends AppCompatActivity {
         });
     }
 
-    public void paymentClick(View v){
+    public void paymentClick() {
         new momoPayment(writeJSON());
     }
 
@@ -127,8 +127,8 @@ public class ConfirmFinalOrder extends AppCompatActivity {
         JSONObject payerObj = new JSONObject();
         try {
 
-            payerObj.put("partyIdType","MSISDN");
-            payerObj.put("partyId","0242626771");
+            payerObj.put("partyIdType", "MSISDN");
+            payerObj.put("partyId", "0242626771");
 
             jsonObject.put("amount", 20.00);
             jsonObject.put("currency", "GHS");
