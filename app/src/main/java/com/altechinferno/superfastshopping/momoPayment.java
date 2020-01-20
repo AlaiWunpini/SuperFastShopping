@@ -1,14 +1,13 @@
 package com.altechinferno.superfastshopping;
 //
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.altechinferno.superfastshopping.Model.Cart;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -22,24 +21,15 @@ import java.net.URL;
 
 public class momoPayment extends AppCompatActivity {
 
-    private static momoPayment instance ;
+    private Context ct ;
 
-    public momoPayment(String body){
-        instance = this;
+    public momoPayment(String body,Context ct){
+        this.ct = ct;
 
         new HTTPTrack().execute(body);
     }
 
-    public momoPayment(){
-        instance = this;
-    }
-
-    public static Context getContext() {
-        instance = new momoPayment();
-        return instance;
-    }
-
-    private static class HTTPTrack extends AsyncTask<String, Void, Void> {
+    private class HTTPTrack extends AsyncTask<String, Void, Void> {
 
 
         @Override
@@ -83,8 +73,8 @@ public class momoPayment extends AppCompatActivity {
                 }
 
             } catch (Exception e) {
-                //e.printStackTrace();
-                Toast.makeText(momoPayment.getContext(),e.getMessage(),Toast.LENGTH_LONG);
+                e.printStackTrace();
+               //Toast.makeText(ct,e.getMessage(),Toast.LENGTH_LONG);
             } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();
